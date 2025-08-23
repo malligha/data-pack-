@@ -1,0 +1,58 @@
+//this table is for  storing customer details
+CREATE TABLE users (
+    user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    mobile_number VARCHAR(15) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+// for storing base plans offered by admin
+CREATE TABLE data_plans (
+    plan_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    plan_name VARCHAR(100) NOT NULL,
+    validity_days INT NOT NULL,
+    data_limit_gb DECIMAL(5,2), -- e.g. 1.5 GB per day
+    price DECIMAL(10,2) NOT NULL
+);
+
+// for add on data pack that extra data user can purchase
+CREATE TABLE addon_packs (
+    addon_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    addon_name VARCHAR(100) NOT NULL,
+    data_limit_gb DECIMAL(5,2) NOT NULL,
+    validity_days INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+);
+
+//for which plan the user has subscribed
+CREATE TABLE user_plan (
+    subscription_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT,
+    plan_id BIGINT,
+    start_date DATE,
+    end_date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (plan_id) REFERENCES data_plans(plan_id)
+);
+
+//for user add on data packs
+CREATE TABLE user_addons (
+    purchase_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT,
+    addon_id BIGINT,
+    purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expiry_date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (addon_id) REFERENCES addon_packs(addon_id)
+);
+
+//for tracking the data usage
+CREATE TABLE data_usage (
+    usage_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT,
+    usage_date DATE,
+    data_used_mb DECIMAL(10,2),
+    network_type VARCHAR(20), -- e.g. 4G, 5G
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
