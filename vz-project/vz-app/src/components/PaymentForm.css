@@ -1,0 +1,70 @@
+.payment-container {
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e60000; /* Verizon red */
+  margin-bottom: 20px;
+}
+
+.payment-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.payment-form .row {
+  display: flex;
+  gap: 10px;
+}
+
+.payment-form button {
+  background: #e60000;
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  margin-top: 15px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.payment-form button:hover {
+  background: black;
+}
+.payment-form-container {
+  position: relative;
+}

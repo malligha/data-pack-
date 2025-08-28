@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure navbar and banner stick together */
+.banner {
+  margin-top: 0;
+  padding-top: 0;
+  height: 90vh; /* adjust height */
+  background-image: url("../imgs/v.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* better fit */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: zoomInOut 15s ease-in-out infinite;
+}
+
+.banner h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+text-align: end;
+  padding: 20px 40px;
+  border-radius: 15px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Plans Section */
+.plans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+}
+
+/* Individual Plan Card */
+.plan-box {
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  border: none;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px;
+  width: 260px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.plan-box:hover {
+  transform: scale(1.08) translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
